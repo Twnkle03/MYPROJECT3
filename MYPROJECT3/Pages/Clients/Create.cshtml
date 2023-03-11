@@ -1,0 +1,80 @@
+﻿@page
+@model MYPROJECT3.Pages.Clients.CreateModel
+@{
+}
+
+<html>
+<body>
+    <br>
+    <h2>New Client</h2>
+
+    @if (Model.errorMessage.Length > 0)
+    {
+        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+            <strong> @Model.errorMessage</strong>
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+    }
+
+    <form method="POST" name="clientInfo" onsubmit="return clientInformation">
+        <div class="row mb=3">
+            <label class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" autocomplete="off" id="clientInfo.name" name="name" placeholder="ABC" pattern="^[A-Za-z]+$" value="@Model.clientInfo.name" required>
+                @* <span asp-validation-for="clientInfo.name" class="text-danger"></span>*@
+            </div>
+        </div>
+        <br>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <input type="email" class="form-control" autocomplete="off" id="clientInfo.email" name="email" placeholder="abc@gmail.com" pattern="^[a-zA-Z0-9._+-]+&#64;[a-zA-Z0-9.-]+\.\w{2,3}$" title="enter only valid domain name.com/.org/.net/.gov/.edu" value="@Model.clientInfo.email" required>
+            </div>
+        </div>
+            
+             <div class="row mb=3">
+                <label class="col-sm-3 col-form-label">Phone</label>
+                <div class="col-sm-6">
+                <input type="phone" class="form-control" autocomplete="off" id="clientInfo.phone" name="phone" placeholder="XXX-XXX-XXXX" pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$" maxlength="12" title="enter 10 digit phone number ex.123-456-7890" value="@Model.clientInfo.phone" required>
+                </div>
+            </div>
+            <br />
+
+            <div class="row mb=3">
+                <label class="col-sm-3 col-form-label">Address</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" autocomplete="off" id="clientInfo.address" name="address" placeholder="XYZ" value="@Model.clientInfo.address" required>
+                </div>
+      
+            </div>
+
+                @if (Model.successMessage.Length > 0)
+                {
+                <div class="row mb-3">
+                    <div class="col-sm-9">
+                        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                            <strong> @Model.successMessage</strong>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            <br>
+
+            <div class="row mb-4">
+                <div class="offset-sm-3 col-sm-3 d-grid">
+                    <button type="submit" class="btn btn-primary">  <a href="Clients/Index"></a>Submit</button>
+                </div>
+                <br />
+
+                <br>
+
+                <div class="col-sm-3 d-grid">
+                    <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+                </div>
+            </div>
+            
+    </form>
+</body>
+</html>
